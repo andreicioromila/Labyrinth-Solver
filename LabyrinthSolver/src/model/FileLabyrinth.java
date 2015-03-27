@@ -27,8 +27,12 @@ public class FileLabyrinth implements LabyrinthModel{
 		try {
 			Scanner in = new Scanner(file);
 			while (in.hasNextLine()) {
-	            col=0;
+				if ( col!=0 ) {
+					noColumns=col;
+				}
 				String line = in.nextLine();
+				col=0;
+				row++;
 	            line.getChars(0, line.length(), lineChars, 0);
 	            for (int i=0; i<lineChars.length; i++){
 	            	switch (lineChars[i]){
@@ -39,11 +43,11 @@ public class FileLabyrinth implements LabyrinthModel{
 	            	}
 	            	Cell cell = new Cell(row,col,type);
 	            	labyrinth.add(cell);
-	            	row++;
 	            	col++;
 	            }
 	            
 	        }
+			noRows = row;
 	        in.close();
 		}
 		catch (FileNotFoundException e){
