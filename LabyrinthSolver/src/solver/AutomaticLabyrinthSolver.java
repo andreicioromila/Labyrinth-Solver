@@ -7,7 +7,7 @@ import observer.LabyrinthObserver;
 import viewer.Direction;
 import viewer.LabyrinthView;
 
-public class AutomaticLabyrinthSolver implements LabyrinthSolver{
+public class AutomaticLabyrinthSolver implements LabyrinthSolver {
     LabyrinthModel labyrinth;
     LabyrinthView labyrinthView;
     LabyrinthObserver labyrinthObserver;
@@ -24,7 +24,7 @@ public class AutomaticLabyrinthSolver implements LabyrinthSolver{
 
         diveLabyrinth(labyrinth.getStartCell());
 
-        labyrinthObserver.notify(Event.FINISH);
+        //labyrinthObserver.notify(Event.FINISH);
     }
 
     private void diveLabyrinth(Cell currentCell) {
@@ -34,7 +34,7 @@ public class AutomaticLabyrinthSolver implements LabyrinthSolver{
         for (Direction dir : Direction.values()) {
             Cell nextCell = nextCellToExplore(currentCell, dir);
 
-            if (nextCell.getType() == CellType.FREE || nextCell.getType() == CellType.FINISH){
+            if (nextCell.getType() == CellType.FREE || nextCell.getType() == CellType.FINISH) {
                 currentCell.setType(CellType.PASSED);
                 diveLabyrinth(nextCell);
                 currentCell.setType(CellType.FREE);
