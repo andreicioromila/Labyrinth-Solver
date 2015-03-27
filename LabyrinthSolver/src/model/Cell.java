@@ -14,6 +14,10 @@ public class Cell {
 		this.type=type;
 	}
 
+	public Cell() {
+
+	}
+
 	public int getX() {
 		return x;
 	}
