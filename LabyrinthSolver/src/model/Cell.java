@@ -1,5 +1,7 @@
 package model;
 
+
+
 public class Cell {
 
 	private int x;
@@ -35,6 +37,5 @@ public class Cell {
 	public void setType(CellType type) {
 		this.type = type;
 	}
-	
 	
 }

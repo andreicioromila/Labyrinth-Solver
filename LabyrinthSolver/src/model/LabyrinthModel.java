@@ -1,5 +1,6 @@
 package model;
 
+
 public interface LabyrinthModel {
 	
 	public int getRowCount();
@@ -13,4 +14,6 @@ public interface LabyrinthModel {
 	public Cell getStartCell();
 	
 	public Cell getFinishCell();
+
+	public Cell getCellAt(int x, int y);
 }

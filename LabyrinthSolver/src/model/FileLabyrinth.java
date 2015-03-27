@@ -50,4 +50,8 @@ public class FileLabyrinth implements LabyrinthModel{
 		return null;
 	}
 
+	public Cell getCellAt(int x, int y) {
+		return labyrinth.get(x*noColumns + y);
+	}
+
 }
