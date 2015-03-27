@@ -12,6 +12,7 @@ public class FileLabyrinth implements LabyrinthModel{
 	private int noRows;
 	private int noColumns;
 	
+	@SuppressWarnings("null")
 	public FileLabyrinth(String path){
 		//read from file, set noRows & noColumns
 		
@@ -20,13 +21,13 @@ public class FileLabyrinth implements LabyrinthModel{
 		int row=0;
 		int col=0;
 		List<Cell> labyrinth = new LinkedList<Cell>();
-		char[] lineChars = null;
+		char lineChars[] = null;
 		CellType type = CellType.FREE;
 		
 		try {
 			Scanner in = new Scanner(file);
 			while (in.hasNextLine()) {
-	            
+	            col=0;
 				String line = in.nextLine();
 	            line.getChars(0, line.length(), lineChars, 0);
 	            for (int i=0; i<lineChars.length; i++){
@@ -37,6 +38,9 @@ public class FileLabyrinth implements LabyrinthModel{
 	            	case 'F':	type = CellType.FINISH;
 	            	}
 	            	Cell cell = new Cell(row,col,type);
+	            	labyrinth.add(cell);
+	            	row++;
+	            	col++;
 	            }
 	            
 	        }

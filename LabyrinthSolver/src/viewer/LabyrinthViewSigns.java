@@ -1,5 +1,7 @@
 package viewer;
 
+import java.util.Scanner;
+
 import model.LabyrinthModel;
 
 public class LabyrinthViewSigns implements LabyrinthView {
@@ -17,5 +19,22 @@ public class LabyrinthViewSigns implements LabyrinthView {
 			for (int j=0;j<m;j++)
 				result+=labyrinth.getCellAt(i,j).getType().toStringSigns();
 		return result;
+	}
+
+	public Direction getNextStep() {
+		Scanner in = new Scanner(System.in);
+		
+		switch (in.nextLine().toLowerCase()){
+		case "up":		in.close();
+						return Direction.UP;
+		case "down":	in.close();
+						return Direction.DOWN;
+		case "left":	in.close();
+						return Direction.LEFT;
+		case "right":	in.close();
+						return Direction.RIGHT;
+		default:		in.close();
+						return null;
+		}
 	}
 }
