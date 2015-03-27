@@ -6,11 +6,11 @@ public interface LabyrinthModel {
 	
 	public int getColumnCount();
 	
-	public boolean isFreeAt();
+	public boolean isFreeAt(int x,int y);
 	
-	public boolean isWallAt();
+	public boolean isWallAt(int x,int y);
 	
-	public void getStartCell();
+	public Cell getStartCell();
 	
-	public void getFinishCell();
+	public Cell getFinishCell();
 }
