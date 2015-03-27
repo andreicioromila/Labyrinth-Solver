@@ -7,4 +7,6 @@ public interface LabyrinthView {
 	public Direction getNextStep();
 
     public void printMessage(String textToPrint);
+    
+    public void printLabyrinth();
 }

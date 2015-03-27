@@ -19,8 +19,6 @@ public class AutomaticLabyrinthSolver implements LabyrinthSolver {
     }
 
     public void solveLabyrinth() {
-        Cell nextCell, currentCell;
-        Direction nextDirection;
 
         diveLabyrinth(labyrinth.getStartCell());
 

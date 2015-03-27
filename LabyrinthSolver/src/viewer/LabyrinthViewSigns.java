@@ -11,7 +11,7 @@ public class LabyrinthViewSigns implements LabyrinthView {
         this.labyrinth = labyrinth;
     }
 
-    public String toString() {
+	public String toString() {
         String result = new String("");
         int n = labyrinth.getRowCount();
         int m = labyrinth.getRowCount();
@@ -26,7 +26,7 @@ public class LabyrinthViewSigns implements LabyrinthView {
     public Direction getNextStep() {
         Scanner in = new Scanner(System.in);
         String input = in.nextLine().toUpperCase();
-
+        in.close();
         return Direction.valueOf(input);
     }
 

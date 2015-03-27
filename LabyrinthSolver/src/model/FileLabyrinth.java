@@ -20,8 +20,7 @@ public class FileLabyrinth implements LabyrinthModel{
 		
 		int row=0;
 		int col=0;
-		List<Cell> labyrinth = new LinkedList<Cell>();
-		char lineChars[] = null;
+		labyrinth = new LinkedList<Cell>();
 		CellType type = CellType.FREE;
 		
 		try {
@@ -33,9 +32,8 @@ public class FileLabyrinth implements LabyrinthModel{
 				String line = in.nextLine();
 				col=0;
 				row++;
-	            line.getChars(0, line.length(), lineChars, 0);
-	            for (int i=0; i<lineChars.length; i++){
-	            	switch (lineChars[i]){
+	            for (int i=0; i<line.length(); i++){
+	            	switch (line.charAt(i)){
 	            	case ' ':	type = CellType.FREE;
 	            	case 'S':	type = CellType.START;
 	            	case '|':	type = CellType.WALL;
