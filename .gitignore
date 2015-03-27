@@ -83,6 +83,7 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
+# Eclipse
 *.pydevproject
 .metadata
 .gradle
@@ -95,6 +96,7 @@ tmp/
 local.properties
 .settings/
 .loadpath
+.recommenders
 
 # Eclipse Core
 .project
