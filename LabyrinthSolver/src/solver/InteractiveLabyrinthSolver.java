@@ -35,7 +35,7 @@ public class InteractiveLabyrinthSolver implements LabyrinthSolver{
             }
 
             if (currentCell.getType() == CellType.WALL){
-                labyrinthView.sendMessage("Invalid move!");
+                labyrinthView.printMessage("Invalid move!");
                 nextDirection = labyrinthView.getNextStep();
                 nextCell = nextCellToExplore(currentCell, nextDirection);
             }

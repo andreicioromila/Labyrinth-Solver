@@ -7,7 +7,7 @@ import observer.LabyrinthObserver;
 import viewer.Direction;
 import viewer.LabyrinthView;
 
-public class AutomaticLabyrinthSolver {
+public class AutomaticLabyrinthSolver implements LabyrinthSolver{
     LabyrinthModel labyrinth;
     LabyrinthView labyrinthView;
     LabyrinthObserver labyrinthObserver;
