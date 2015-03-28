@@ -6,14 +6,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileLabyrinth implements LabyrinthModel {
+public class FileLabyrinthModel implements LabyrinthModel {
 
     private List<Cell> labyrinth;
     private int noRows;
-    private int noColumns;
+    private int noColumns = 0;
 
     @SuppressWarnings("null")
-    public FileLabyrinth(String path) {
+    public FileLabyrinthModel(String path) {
         //read from file, set noRows & noColumns
 
         File file = new File(path);
@@ -28,12 +28,11 @@ public class FileLabyrinth implements LabyrinthModel {
         try {
             Scanner in = new Scanner(file);
             while (in.hasNextLine()) {
-                if (col != 0) {
+                if (col != 0 && noColumns==0) {
                     noColumns = col;
                 }
                 String line = in.nextLine();
                 col = 0;
-                row++; // prost pus pt ca asa incepem de pe randul 1
                 for (int i = 0; i < line.length(); i++) {
                     switch (line.charAt(i)) {
                         case ' ':
@@ -53,6 +52,7 @@ public class FileLabyrinth implements LabyrinthModel {
                     labyrinth.add(cell);
                     col++;
                 }
+                row++;
 
             }
             noRows = row;
@@ -62,7 +62,7 @@ public class FileLabyrinth implements LabyrinthModel {
         }
     }
 
-    public FileLabyrinth(int rows, int columns) {
+    public FileLabyrinthModel(int rows, int columns) {
         this.noRows = rows;
         this.noColumns = columns;
         //generate random

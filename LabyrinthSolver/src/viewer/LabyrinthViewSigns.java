@@ -23,10 +23,8 @@ public class LabyrinthViewSigns implements LabyrinthView {
         return result;
     }
 
-    public Direction getNextStep() {
-        Scanner in = new Scanner(System.in);
+    public Direction getNextStep(Scanner in) {
         String input = in.nextLine().toUpperCase();
-        in.close();
         return Direction.valueOf(input);
     }
 

@@ -7,6 +7,8 @@ import observer.LabyrinthObserver;
 import viewer.Direction;
 import viewer.LabyrinthView;
 
+import java.util.Scanner;
+
 public class InteractiveLabyrinthSolver implements LabyrinthSolver {
     LabyrinthModel labyrinth;
     LabyrinthView labyrinthView;
@@ -19,32 +21,31 @@ public class InteractiveLabyrinthSolver implements LabyrinthSolver {
     }
 
     public void solveLabyrinth() {
+        Scanner in = new Scanner(System.in);
         Cell nextCell, currentCell;
         Direction nextDirection;
 
         currentCell = labyrinth.getStartCell();
-        nextDirection = labyrinthView.getNextStep();
-        nextCell = nextCellToExplore(currentCell, nextDirection);
 
-        while (nextCell == labyrinth.getFinishCell()) {
-            if (currentCell.getType() == CellType.FREE) {
-                currentCell.setType(CellType.PASSED);
-            } else if (currentCell.getType() == CellType.PASSED) {
-                currentCell.setType(CellType.FREE);
+
+        do {
+            nextDirection = labyrinthView.getNextStep(in);
+            nextCell = nextCellToExplore(currentCell, nextDirection);
+            if (nextCell.getType() == CellType.FREE) {
+                nextCell.setType(CellType.PASSED);
+            } else if (nextCell.getType() == CellType.PASSED) {
+                nextCell.setType(CellType.FREE);
             }
 
-            if (currentCell.getType() == CellType.WALL) {
+            if (nextCell.getType() == CellType.WALL) {
                 labyrinthView.printMessage("Invalid move!");
-                nextDirection = labyrinthView.getNextStep();
-                nextCell = nextCellToExplore(currentCell, nextDirection);
-            } else {
+            } else
                 currentCell = nextCell;
-                nextDirection = labyrinthView.getNextStep();
-                nextCell = nextCellToExplore(currentCell, nextDirection);
-            }
-        }
-
+            labyrinthView.printLabyrinth();
+        } while (nextCell != labyrinth.getFinishCell());
+        labyrinthView.printMessage("Succes");
         //labyrinthObserver.notify(Event.FINISH);
+        in.close();
     }
 
     public Cell nextCellToExplore(Cell currentCell, Direction direction) {
@@ -52,16 +53,16 @@ public class InteractiveLabyrinthSolver implements LabyrinthSolver {
 
         switch (direction) {
             case UP:
-                nextCell = labyrinth.getCellAt(currentCell.getX(), currentCell.getY() + 1);
-                break;
-            case DOWN:
-                nextCell = labyrinth.getCellAt(currentCell.getX(), currentCell.getY() - 1);
-                break;
-            case LEFT:
                 nextCell = labyrinth.getCellAt(currentCell.getX() - 1, currentCell.getY());
                 break;
-            case RIGHT:
+            case DOWN:
                 nextCell = labyrinth.getCellAt(currentCell.getX() + 1, currentCell.getY());
+                break;
+            case LEFT:
+                nextCell = labyrinth.getCellAt(currentCell.getX(), currentCell.getY() - 1);
+                break;
+            case RIGHT:
+                nextCell = labyrinth.getCellAt(currentCell.getX(), currentCell.getY() + 1);
                 break;
         }
 
