@@ -31,6 +31,11 @@ public class InteractiveLabyrinthSolver implements LabyrinthSolver {
         do {
             nextDirection = labyrinthView.getNextStep(in);
             nextCell = nextCellToExplore(currentCell, nextDirection);
+            if (nextCell == null) {
+                labyrinthView.printMessage("Invalid move!");
+                labyrinthView.printLabyrinth();
+                continue;
+            }
             if (nextCell.getType() == CellType.FREE) {
                 nextCell.setType(CellType.PASSED);
             } else if (nextCell.getType() == CellType.PASSED) {

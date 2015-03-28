@@ -27,13 +27,14 @@ public class AutomaticLabyrinthSolver implements LabyrinthSolver {
 
     private void diveLabyrinth(Cell currentCell) {
         if (currentCell.getType() == CellType.FINISH) {
+            labyrinthView.printLabyrinth();
             return;
         }
         for (Direction dir : Direction.values()) {
             Cell nextCell = nextCellToExplore(currentCell, dir);
-
-            if (nextCell.getType() == CellType.FREE || nextCell.getType() == CellType.FINISH) {
-                currentCell.setType(CellType.PASSED);
+            if (nextCell != null && (nextCell.getType() == CellType.FREE || nextCell.getType() == CellType.FINISH || currentCell.getType() == CellType.START) ) {
+                if (currentCell.getType() != CellType.START)
+                    currentCell.setType(CellType.PASSED);
                 diveLabyrinth(nextCell);
                 currentCell.setType(CellType.FREE);
             }
@@ -54,7 +55,7 @@ public class AutomaticLabyrinthSolver implements LabyrinthSolver {
                 nextCell = labyrinth.getCellAt(currentCell.getX() - 1, currentCell.getY());
                 break;
             case RIGHT:
-                nextCell = labyrinth.getCellAt(currentCell.getX() + 1, currentCell.getY());
+                    nextCell = labyrinth.getCellAt(currentCell.getX() + 1, currentCell.getY());
                 break;
         }
 

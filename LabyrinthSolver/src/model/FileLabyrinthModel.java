@@ -102,6 +102,7 @@ public class FileLabyrinthModel implements LabyrinthModel {
     }
 
     public Cell getCellAt(int x, int y) {
+        if (x >= noRows || x < 0 || y < 0 || y>=noColumns) return null;
         return labyrinth.get(x * noColumns + y);
     }
 

@@ -14,8 +14,8 @@ public class LabyrinthTester {
 		LabyrinthModel labyrinth = new FileLabyrinthModel("lab.txt");
 		LabyrinthView labyrinthViewer = new LabyrinthViewSigns(labyrinth);
 		LabyrinthObserver labyrinthObserver = null;
-		LabyrinthSolver labyrinthSolver = new InteractiveLabyrinthSolver(labyrinth,labyrinthViewer , labyrinthObserver);
-		
+		LabyrinthSolver labyrinthSolver = new AutomaticLabyrinthSolver(labyrinth,labyrinthViewer , labyrinthObserver);
+
 		labyrinthViewer.printLabyrinth();
 
         labyrinthSolver.solveLabyrinth();
