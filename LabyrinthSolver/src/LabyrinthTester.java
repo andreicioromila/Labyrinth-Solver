@@ -16,6 +16,10 @@ public class LabyrinthTester {
 		LabyrinthSolver labyrinthSolver = new AutomaticLabyrinthSolver(labyrinth,labyrinthViewer , labyrinthObserver);
 		
 		labyrinthViewer.printLabyrinth();
+
+        labyrinthSolver.solveLabyrinth();
+
+        labyrinthViewer.printLabyrinth();
 		
 	}
 

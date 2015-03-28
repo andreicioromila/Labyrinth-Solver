@@ -46,12 +46,16 @@ public class AutomaticLabyrinthSolver implements LabyrinthSolver {
         switch (direction) {
             case UP:
                 nextCell = labyrinth.getCellAt(currentCell.getX(), currentCell.getY() + 1);
+                break;
             case DOWN:
                 nextCell = labyrinth.getCellAt(currentCell.getX(), currentCell.getY() - 1);
+                break;
             case LEFT:
                 nextCell = labyrinth.getCellAt(currentCell.getX() - 1, currentCell.getY());
+                break;
             case RIGHT:
                 nextCell = labyrinth.getCellAt(currentCell.getX() + 1, currentCell.getY());
+                break;
         }
 
         return nextCell;
